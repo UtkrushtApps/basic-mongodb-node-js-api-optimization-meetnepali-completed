@@ -1,0 +1,27 @@
+services:
+  mongo:
+    image: mongo
+    container_name: utkrusht_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+      - MONGO_INITDB_DATABASE=utkrusht_store
+    volumes:
+      - /root/task/mongo-data:/data/db
+      - /root/task/seed_database.js:/docker-entrypoint-initdb.d/seed_database.js:ro
+
+  api:
+    build: /root/task
+    container_name: utkrusht_api
+    depends_on:
+      - mongo
+    working_dir: /root/task
+    ports:
+      - "3000:3000"
+    command: ["npm", "start"]
+
+networks:
+  default:
+    name: utkrusht_task_network
