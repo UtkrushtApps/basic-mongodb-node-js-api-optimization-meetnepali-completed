@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Connection string matches user created in seed_database.js
-const MONGO_URI = 'mongodb://appuser:apppassword@mongo:27017/utkrusht_store?authSource=utkrusht_store';
+const MONGO_URI = 'mongodb://appuser:apppassword@159.65.53.87:27017/utkrusht_store?authSource=utkrusht_store';
 
 let connection = null;
 

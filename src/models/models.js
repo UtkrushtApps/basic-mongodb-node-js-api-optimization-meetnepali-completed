@@ -31,6 +31,12 @@ const ProductSchema = new mongoose.Schema(
   }
 );
 
+// index for product schemas 
+ProductSchema.index({ category: 1 });
+ProductSchema.index({ sku: 1 },{ unique: true });
+ProductSchema.index({ name: 'text', description: 'text' });
+
+
 const Product = mongoose.model('Product', ProductSchema);
 
 module.exports = {
